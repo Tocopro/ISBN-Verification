@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main() 
+{
+    // The User Enters the ISBN Number by digit series
+    string first_digit_series, second_digit_series, third_digit_series, fourth_digit_series;
+    cout << "Enter the First Series of digit after 978 identifying the country and language - " << endl;
+    cin >> first_digit_series;
+    cout << "Enter the Second Series of digits usually three digit representing the publisher - " << endl;
+    cin >> second_digit_series;
+    cout << "Enter the Third Series of digits after the Publishers series identfying the edition and format - " << endl;
+    cin >> third_digit_series;
+    cout << "Enter the Fourth Series digit after the Edition series numbers, the check digit - " << endl;
+    cin >> fourth_digit_series; 
+    // The String is concatenated to 10 digits long string
+    string ISBN = first_digit_series + second_digit_series + third_digit_series + fourth_digit_series;
+    // The ISBN digit length is checked by Bool method to verify it is 10 digits long
+    if ((first_digit_series + second_digit_series + third_digit_series + fourth_digit_series).length() == 10)
+    {
+        cout << "The ISBN number is 10 digits long \n";
+    }
+    else
+    {
+        cout << "The ISBN number is not 10 Digits long ";
+    }
+    // The ISBN 10 digit string is iterated and each digit is coinverted into an integer
+    // the integer is multiplied in series by an ascending count of 1 - 10  
+    cout << "The ISBN number is " << ISBN << "\n";
+    int number_string_length = ISBN.length();
+    int ISBNCalculationSum = 0;
+    for(int i = 0; i < number_string_length; i++)
+    {
+          
+        cout << (ISBNCalculationSum += (ISBN[i] - '0') * (i + 1)) << "\n";
+
+    }
+    // The Sum of all the integers is divided by 11 then by boolean method it is verified if it is a
+    // legitimate number
+    cout << "Calculated 10 digit ISBN Number Total = " << ISBNCalculationSum << "\n";
+    cout << ISBNCalculationSum << " divided by 11 = " << ISBNCalculationSum / 11 << "\n" ;
+    (float)ISBNCalculationSum/ 11  ;
+    if(ISBNCalculationSum % 11 == 0)
+    {
+        cout << "The ISBN Number is Legitimate ";
+    }
+    else
+    {
+        cout << "The ISBN Number is Illigitimate";
+    }
+    
+
+   return 0;
+}
